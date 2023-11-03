@@ -4,8 +4,7 @@ CritereMarque(String marque) {
         this.marque = marque;
         }
 public boolean estSatisfaitPar(Voiture v) {
-        if (v.getMarque() != this.marque)
-                return false;
-        else return true;
-}
+        return v.getMarque().equals(this.marque)
+           
         }
+}
