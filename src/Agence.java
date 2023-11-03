@@ -11,21 +11,21 @@ public class Agence {
         loueClientVoiture = new TreeMap<>();
     }
 
-    public void ajoutVoiture(Voiture v) throws VoitureException {
+    public void ajoutVoiture(Voiture v) throws VoitureException, ListVoitures.VoitureException {
         if (v == null) {
             throw new VoitureException("La voiture à ajouter n'existe pas.");
         }
         vs.ajoutVoiture(v);
     }
 
-    public void suppVoiture(Voiture v) throws VoitureException {
+    public void suppVoiture(Voiture v) throws VoitureException, ListVoitures.VoitureException {
         if (v == null) {
             throw new VoitureException("La voiture à supprimer n'existe pas.");
         }
         vs.supprimeVoiture(v);
     }
 
-    public void loueClientVoiture(Client cl, Voiture v) throws VoitureException {
+    public void loueClientVoiture(Client cl, Voiture v) throws VoitureException, ListVoitures.VoitureException {
         if (cl == null || v == null) {
             throw new VoitureException("Client ou voiture invalide pour la location.");
         }
@@ -35,7 +35,7 @@ public class Agence {
         loueClientVoiture.get(cl).ajoutVoiture(v);
     }
 
-    public void retourClientVoiture(Client cl, Voiture v) throws VoitureException {
+    public void retourClientVoiture(Client cl, Voiture v) throws VoitureException, ListVoitures.VoitureException {
         if (cl == null || v == null) {
             throw new VoitureException("Client ou voiture invalide pour le retour.");
         }
@@ -96,7 +96,7 @@ public class Agence {
         return triCroissant;
     }
 
-    private class VoitureException extends Exception {
+    public class VoitureException extends Exception {
         public VoitureException(String message) {
             super(message);
         }
